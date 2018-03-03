@@ -1,4 +1,4 @@
-#Control your rooted Toon thermostat
+# Control your rooted Toon thermostat
 This code will give you the ability to control your Toon device security from outside your local network (https recommended).
 
 How to get started:
