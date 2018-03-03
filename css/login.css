@@ -1,0 +1,107 @@
+@font-face {
+    font-family:"Etelka Medium Pro";
+    src: url("etelka.ttf") /* TTF file for CSS3 browsers */
+}
+
+h1,h2,h3 {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+* {
+    --colors-background: #f0f0f0;
+    --colors-blocks: #fbfbfb;
+    --colors-text: #181818;
+    --colors-sub-text: #a6a6a6;
+    --colors-positive: #689f39;
+    --colors-negative: #dd4300;
+    --colors-active: #58a8ea;
+
+    color: var(--colors-text);
+}
+
+h1, h2, h3, a, b, u, i {
+    font-family: "Etelka Medium Pro";
+}
+
+body {
+    background-color: var(--colors-background);
+}
+
+.box {
+    position: absolute;
+    width: 400px;
+    max-width: calc(100% - 32px);
+    display: block;
+    left: calc(50% - 200px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--colors-blocks);
+}
+
+@media screen and (max-width: 432px) {
+    .box {
+        left: 16px;
+    }
+}
+
+.box h1 {
+    padding: 16px;
+    background-color: var(--colors-active);
+    color: white;
+    margin-bottom: 0px;
+}
+
+.box .content {
+    padding: 16px;
+}
+
+.formtip {
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: block;
+}
+
+.box form input.niceinput {
+    background-color: var(--colors-background);
+    border: none;
+    padding: 16px;
+    display: block;
+    width: calc(100% - 32px);
+    margin-bottom: 8px;
+    outline: none;
+}
+
+.box form input.niceinput.error {
+    border: 1px solid red;
+    animation: inputError 20ms linear;
+    animation-iteration-count: 5;
+}
+
+@keyframes inputError {
+    0% {
+        transform: translateX(0px);  
+    }
+    
+    33% {
+        transform: translateX(10px);
+    }
+
+    66% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+
+.box form input.nicebutton {
+    margin-top: 5px;
+    background-color: transparent;
+    border: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--colors-text);
+}
