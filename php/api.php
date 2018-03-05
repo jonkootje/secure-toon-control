@@ -21,13 +21,19 @@ $VERSION = '4.8'; // TOON VERSION (SUPPORTED: 4.8 / 4.9)
 
 
 
-function buildUrl($adress, $get) {
+function buildUrl($adress, $get, $type = 'thermostat') {
     global $VERSION;
-    if ($VERSION == "4.9") {
-        return 'http://'. $adress .'/happ_thermstat?'. http_build_query($get);
-    } else {
-        return 'http://'. $adress .'/happ_thermostat?'. http_build_query($get);
-    }   
+
+    if ($type == 'thermostat') {
+        if ($VERSION == "4.9") {
+            return 'http://'. $adress .'/happ_thermstat?'. http_build_query($get);
+        } else {
+            return 'http://'. $adress .'/happ_thermostat?'. http_build_query($get);
+        }   
+    } elseif ($type == 'power') {
+        return 'http://'. $adress .'/happ_pwrusage?'. http_build_query($get);
+        // action=GetCurrentUsage 
+    }
 }
 
 function getData($url) {
@@ -128,6 +134,19 @@ if (!isset($_POST['command'])) {
             $output['success'] = true;
             $output['error'] = 'NONE';
         }
+    } elseif ($command == 'getData') {
+            // Ask toon for status information (Power and Thermo)
+            $url = buildUrl($ADRESS, 'action=getThermostatInfo');
+            $dataThermo = getData($url);
+
+            $url = buildUrl($ADRESS, 'action=getCurrentUsage', 'power');
+            $dataPower = getData($url);
+            
+            $data = array_merge($dataThermo, $dataPower);
+
+            $output['return'] = $data;
+            $output['success'] = true;
+            $output['error'] = 'NONE';
     } else {
         $output['error'] = 'INVALID_COMMAND';
     }

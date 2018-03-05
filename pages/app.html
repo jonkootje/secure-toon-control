@@ -1,21 +1,4 @@
-
-<div id="settings">
-    <div class="section">
-        <h3>Settings</h3>
-        <form id="settings_form" style="margin-bottom: 0px;" method="" action="javascript:toon.saveSettings(`#settings_form`)">
-            <input type="text" class="niceinput" name="endpoint" placeholder="API Endpoint*">
-            <input type="number" step="1" class="niceinput" name="port" placeholder="Port (default: 80)">
-            <input type="number" class="niceinput" name="refreshrate" placeholder="Refresh interval (default: 10 Sec)" min="1" max="1000" step="1">
-            <div style="text-align: center; margin-top: 16px;">
-                <input type="submit" class="submitbtn" value="Verbinden">
-            </div>
-        </form>
-    </div>
-</div>
-
 <div id="main" class="block">
-
-    <!-- <div class="settingsbtn" onclick="toon.openSettings()"></div> -->
 
     <div class="section" style="text-align: center">
         <img class="fireicon" id="burner" src="img/icon-fire.png">
@@ -44,6 +27,16 @@
         <div class="programbtn act_home" data-state="home">Thuis</div>
         <div class="programbtn act_sleep" data-state="sleep">Slapen</div>
         <div class="programbtn act_comfort" data-state="comfort">Comfort</div>
+    </div>
+
+    <div class="section">
+        <img class="icon" src="img/power-icon.png">
+        <span class="data" id="current_power">0</span>
+    </div>
+    
+    <div class="section">
+        <img class="icon" src="img/gass-icon.png">
+        <span class="data" id="usage_gass">0</span>
     </div>
 
     <div class="section connection loading">

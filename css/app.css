@@ -337,3 +337,11 @@ input.submitbtn {
 /* .togglebutton:not(.active) {
     background-color: var(--colors-negative);
 } */
+
+.icon {
+    height: 35px;
+    width: 35px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}

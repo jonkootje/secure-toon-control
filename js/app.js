@@ -182,12 +182,13 @@ var dashboard = {
         if (!toon.isIncreasing || forcerefresh) {
             console.log('refreshing');
     
-            var url = 'php/api.php?action=getThermostatInfo';
+            // var url = 'php/api.php?action=getThermostatInfo';
+            var url = 'php/api.php';
             $.ajax({
                 "url":url,
                 "method":"POST",
                 "data":{
-                    "command":"app"
+                    "command":"getData"
                 },
                 "dataType":"JSON",
                 "success":function(resp) {
@@ -202,7 +203,7 @@ var dashboard = {
                         }
 
                     } else {
-                        location.reload();
+                        // location.reload();
                     }
                 },
                 "failure":function(resp) {
@@ -322,6 +323,21 @@ var dashboard = {
             // Burner is not active
             $('#burner').attr('src', 'img/icon-fire-off.png');
         }
+
+        // POWER CODE
+        if (data.powerUsage.value == null) {
+            var powerUsage = '0 Watt';
+        } else {
+            var powerUsage = data.powerUsage.value + ' Watt';
+        }
+
+        if (data.gasUsage.value == null) {
+            var gasUsage = '0 L';
+        } else {
+            var gasUsage = data.gasUsage.value + ' L';
+        }
+        $('#current_power').html(powerUsage);
+        $('#usage_gass').html(gasUsage);
         
         return true;
     }
