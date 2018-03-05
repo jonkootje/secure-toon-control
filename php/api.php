@@ -13,16 +13,21 @@ session_start();
 // SETTINGS - CHANGE THESE \/\/\/\/\/\/\/\/\/
 
 $PASSWORD = 'password'; // PASSWORD TO GET ACCESS TO TOON CONTROLLS   
-$PASSWORD_VERSION = 1; // INCREASE WHEN NEW PASSWORD
+$PASSWORD_VERSION = 1; // INCREASE WHEN NEW PASSWORD (ALSO CHANGE IN INDEX.PHP)
 $ADRESS = '192.168.0.45'; // LOCAL IP ADRESS OF TOON SERVER
+$VERSION = '4.8'; // TOON VERSION (SUPPORTED: 4.8 / 4.9)
 
 // END SETTINGS /\/\/\/\/\/\/\/\
 
 
 
 function buildUrl($adress, $get) {
-    return 'http://'. $adress .'/happ_thermostat?'. http_build_query($get);
-    
+    global $VERSION;
+    if ($VERSION == "4.9") {
+        return 'http://'. $adress .'/happ_thermstat?'. http_build_query($get);
+    } else {
+        return 'http://'. $adress .'/happ_thermostat?'. http_build_query($get);
+    }   
 }
 
 function getData($url) {

@@ -4,6 +4,8 @@
 
 session_start();
 
+$PASSWORD_VERSION = 1; // Change this when changing password (also in php/api.php)
+
 function isRemembered() {
     if (isset($_COOKIE['toon_remember'])) {
         $rememberedData = unserialize(file_get_contents('data/remember.dat'));

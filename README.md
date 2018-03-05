@@ -10,3 +10,5 @@ How to use:
 1. Access the website by connecting to your webserver (When using outside local network, https connection is recommended)
 2. Login using the password you set in /php/api.php
 3. control your rooted Toon device!
+
+Supported Toon versions: 4.8 / 4.9

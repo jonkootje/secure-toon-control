@@ -197,7 +197,7 @@ var dashboard = {
                             .removeClass('disconnected')
                             .addClass('connected');
                         
-                            if (!toon.isIncreasing) {
+                        if (!toon.isIncreasing) {
                             dashboard.fillData(resp.return);
                         }
 
