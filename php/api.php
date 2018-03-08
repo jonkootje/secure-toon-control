@@ -1,11 +1,11 @@
 <?php
 session_start();
 /*
-    Safely controll your toon thermostat with a secure connection.
+    Safely control your toon thermostat with a secure connection.
 
     MADE BY: Sander Jonk 2018
     GITHUB: https://www.github.com/jonkootje
-    BUGD: sander@web-sj.com
+    BUGS: sander@web-sj.com
     WEBSITE: https://www.web-sj.com
 */
 
@@ -26,12 +26,12 @@ function buildUrl($adress, $get, $type = 'thermostat') {
 
     if ($type == 'thermostat') {
         if ($VERSION == "4.9") {
-            return 'http://'. $adress .'/happ_thermstat?'. http_build_query($get);
+            return 'http://'. $adress .'/happ_thermstat?'. $get;
         } else {
-            return 'http://'. $adress .'/happ_thermostat?'. http_build_query($get);
+            return 'http://'. $adress .'/happ_thermostat?'. $get;
         }   
     } elseif ($type == 'power') {
-        return 'http://'. $adress .'/happ_pwrusage?'. http_build_query($get);
+        return 'http://'. $adress .'/happ_pwrusage?'. $get;
         // action=GetCurrentUsage 
     }
 }
@@ -134,15 +134,14 @@ if (!isset($_POST['command'])) {
             $output['success'] = true;
             $output['error'] = 'NONE';
         }
-    } elseif ($command == 'getData') {
+    } elseif ($command == 'GETDATA') {
             // Ask toon for status information (Power and Thermo)
             $url = buildUrl($ADRESS, 'action=getThermostatInfo');
-            $dataThermo = getData($url);
 
-            $url = buildUrl($ADRESS, 'action=getCurrentUsage', 'power');
+            $dataThermo = getData($url);
+            $url = buildUrl($ADRESS, 'action=GetCurrentUsage', 'power');
             $dataPower = getData($url);
-            
-            $data = array_merge($dataThermo, $dataPower);
+            $data = array_merge((array)$dataThermo, (array)$dataPower);
 
             $output['return'] = $data;
             $output['success'] = true;
