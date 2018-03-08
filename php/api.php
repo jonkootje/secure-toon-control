@@ -1,11 +1,11 @@
 <?php
 session_start();
 /*
-    Safely controll your toon thermostat with a secure connection.
+    Safely control your toon thermostat with a secure connection.
 
     MADE BY: Sander Jonk 2018
     GITHUB: https://www.github.com/jonkootje
-    BUGD: sander@web-sj.com
+    BUGS: sander@web-sj.com
     WEBSITE: https://www.web-sj.com
 */
 
@@ -134,7 +134,7 @@ if (!isset($_POST['command'])) {
             $output['success'] = true;
             $output['error'] = 'NONE';
         }
-    } elseif ($command == 'getData') {
+    } elseif ($command == 'GETDATA') {
             // Ask toon for status information (Power and Thermo)
             $url = buildUrl($ADRESS, 'action=getThermostatInfo');
             $dataThermo = getData($url);
