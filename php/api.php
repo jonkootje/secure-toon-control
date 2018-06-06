@@ -128,7 +128,7 @@ if (!isset($_POST['command'])) {
             $output['error'] = 'NO_PERMISSION';
         } else {
             // Parse to toon
-            $url = buildUrl($ADRESS, $_GET);
+            $url = buildUrl($ADRESS, http_build_query($_GET));
             $data = getData($url);
             $output['return'] = $data;
             $output['success'] = true;
